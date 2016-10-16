@@ -58,7 +58,7 @@ func downloadCrawlResult(result crawlResult, jobFinished chan<- bool) {
 		"https://drive.google.com/uc?export=download&id=%s",
 		result.gDocId)
 
-	os.Mkdir(fmt.Sprintf("%s", result.className), 0777)
+	os.MkdirAll(fmt.Sprintf("downloads/%s", result.className), 0777)
 	f, _ := os.Create(fmt.Sprintf("downloads/%s/%s.pdf", result.className, result.title))
 	defer f.Close()
 
